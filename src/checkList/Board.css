@@ -5,6 +5,11 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
+}
+
+.taskList {
+  position: relative;
+  top: 10px;
 }
