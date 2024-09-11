@@ -5,37 +5,39 @@ import { IBoard, ITask } from './types';
 import './BoardsContainer.css';
 
 const INITIAL_BOARD_ID = 0;
+const INITIAL_STATE: IBoard[] = [];
 
-//храним счетчик борд айди со значением ноль
+////extract
+const BOARDS_LOCALSTORAGE_KEY = 'boards';
+const readData = () => localStorage.getItem(BOARDS_LOCALSTORAGE_KEY);
+const parseData = (readData: string) => {
+  try {
+    const parsed = JSON.parse(readData);
+    return parsed;
+  } catch (err) {
+    // TODO: log parsing error to user
+    console.error(err);
+  }
+};
 
 export interface IProps {
   initBoards?: IBoard[];
 }
 
 export const BoardsContainer: React.FC<IProps> = (props) => {
-  const initBoards = props.initBoards || [];
+  const initBoards = props.initBoards || INITIAL_STATE;
+
+  const [prevSerializedState, setPrevSerializedState] = useState<string | undefined>();
+  const [hasChanges, setHasChanges] = useState(false);
 
   const [boards, setBoards] = useState(initBoards);
   const [nextBoardID, setNextBoardID] = useState<number | null>(null);
 
   const [editingBoardId, setEditingBoardId] = useState<number | null>(null);
 
-  ////extract
-  const BOARDS_LOCALSTORAGE_KEY = 'boards';
   const saveBoards = (boards: IBoard[]) => {
     const boardsStr = JSON.stringify(boards);
     localStorage.setItem(BOARDS_LOCALSTORAGE_KEY, boardsStr);
-  };
-  const readData = () => {
-    const data = localStorage.getItem(BOARDS_LOCALSTORAGE_KEY);
-    if (!data) return [];
-    try {
-      const parsed = JSON.parse(data);
-      return parsed;
-    } catch (err) {
-      ////log parsing error
-      return {};
-    }
   };
 
   // determine next board id
@@ -48,9 +50,15 @@ export const BoardsContainer: React.FC<IProps> = (props) => {
 
   // init data read
   useEffect(() => {
-    const extractedData = readData();
-    setBoards(extractedData);
+    const savedData = readData() || JSON.stringify(INITIAL_STATE);
+    const prevState = parseData(savedData) || INITIAL_STATE;
+    setPrevSerializedState(savedData);
+    setBoards(prevState);
   }, []);
+
+  useEffect(() => {
+    ////compare & setHasChanges(true)
+  }, [boards]);
 
   const handleAddBoard = () => {
     if (!nextBoardID) throw Error('Init next board ID error');
@@ -79,13 +87,11 @@ export const BoardsContainer: React.FC<IProps> = (props) => {
     setEditingBoardId(null);
   };
 
-  const onTaskChange = () => {
-    console.log('DBG__ ');
-  };
+  const isSaveButtonDisabled = !hasChanges;
 
   return (
     <div className="boardContainer">
-      <button className="addBoardButton" onClick={() => saveBoards(boards)}>
+      <button disabled={isSaveButtonDisabled} className="addBoardButton" onClick={() => saveBoards(boards)}>
         SAVE BOARDS
       </button>
       <button className="addBoardButton" onClick={handleAddBoard}>

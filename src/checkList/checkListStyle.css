@@ -26,7 +26,6 @@
   word-wrap: break-word;
 }
 
-
 .addBoardButton {
   display: flex;
   justify-content: center;
@@ -38,6 +37,10 @@
   border: 1px solid #ccc;
   width: 10%;
   border-radius: 10px;
+
+  &:disabled {
+    background-color: gray;
+  }
 }
 
 
