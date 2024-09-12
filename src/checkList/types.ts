@@ -1,5 +1,5 @@
 export interface ITask {
-  //// make another ID system - absolute unique
+  // TODO: make another ID system - absolute unique
   id: number;
   title: string;
 }

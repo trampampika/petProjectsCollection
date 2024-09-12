@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import "./Board.css";
 import { Task } from './Task';
 import { ITask } from './types';
+import './Board.css';
 
 export interface IProps {
   id: number;

@@ -16,9 +16,6 @@ export const Boards: React.FC<IProps> = (props) => {
   const handleBoardChange = (newBoardName: string, tasks: ITask[], boardId: number) => {
     onChange(boardId, newBoardName, tasks);
   };
-//доч компонент вставляет данные в от родителя в себя
-
-  if (!Array.isArray(boards)) debugger; //DBG__
 
   const boardElements = boards.map(board => (
     <Board
