@@ -30,11 +30,9 @@ export const Boards: React.FC<IProps> = (props) => {
     />
   ));
 
-// возвращает массив с разметкой
   return (
     <div className="boards">
       {boardElements}
     </div>
   );
 };
-//теперь бордс элемент выглядит как массив с заполненными данными отправленнми <Boards/> с свойствами и jsx разметка

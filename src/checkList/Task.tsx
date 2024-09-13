@@ -5,6 +5,7 @@ export interface IProps {
   onChange: (task: ITask) => void;
   id: number;
   value: string;
+  // isEditing: boolean; ////add
 }
 
 export const Task: React.FC<IProps> = (props) => {

@@ -18,10 +18,25 @@ export interface IProps {
   initTasks?: any[];
 }
 
+////extract to BoardsContainer
+// interface IEmptyEditingTaskId {
+//   boardId: null;
+//   taskId: null;
+// };
+// interface IFilledEditingTaskId {
+//   boardId: number;
+//   taskId: number;
+// };
+// type TEditingTaskId = IEmptyEditingTaskId | IFilledEditingTaskId;
+
 export const Board: React.FC<IProps> = (props) => {
   const { id, value, tasks, isEditingTitle, onBlur, onChange, onSelectEditingTitle } = props;
 
-  // TODO: const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
+  ////extract to BoardsContainer
+  // const [editingTaskId, setEditingTaskId] = useState<TEditingTaskId>({
+  //   boardId: null,
+  //   taskId: null,
+  // });
 
   // TODO: wrong working?
   const [nextTaskID, setNextTaskID] = useState(
