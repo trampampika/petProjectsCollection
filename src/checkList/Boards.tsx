@@ -4,14 +4,14 @@ import './Boards.css';
 
 export interface IProps {
   boards: IBoard[];
-  editingId: number | null;
+  editingTitleId: number | null;
   onChange: (boardId: number, newValue: string, tasks: ITask[]) => void;
-  onClick: (boardId: number) => void;
+  onSelectEditingTitle: (boardId: number) => void;
   onBlur: () => void;
 }
 
 export const Boards: React.FC<IProps> = (props) => {
-  const { boards, editingId, onChange, onClick, onBlur } = props;
+  const { boards, editingTitleId, onChange, onSelectEditingTitle, onBlur } = props;
 
   const handleBoardChange = (newBoardName: string, tasks: ITask[], boardId: number) => {
     onChange(boardId, newBoardName, tasks);
@@ -23,10 +23,10 @@ export const Boards: React.FC<IProps> = (props) => {
       key={board.id}
       value={board.value}
       tasks={board.tasks}
-      isEditing={board.id === editingId}
+      isEditingTitle={board.id === editingTitleId}
       onBlur={onBlur}
       onChange={handleBoardChange}
-      onClick={onClick}
+      onSelectEditingTitle={onSelectEditingTitle}
     />
   ));
 

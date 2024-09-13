@@ -69,7 +69,7 @@ export const BoardsContainer: React.FC = () => {
   const [boards, setBoards] = useState<IBoard[]>();
   const [nextBoardID, setNextBoardID] = useState<number | null>(null);
 
-  const [editingBoardId, setEditingBoardId] = useState<number | null>(null);
+  const [editingBoardTitleId, setEditingBoardTitleId] = useState<number | null>(null);
 
   const saveBoards = () => {
     const newSerializedState = JSON.stringify(boards);
@@ -127,12 +127,12 @@ export const BoardsContainer: React.FC = () => {
     setBoards(newBoards);
   };
 
-  const handleBoardsClick = (boardId: number) => {
-    setEditingBoardId(boardId);
+  const handleSelectEditingTitleId = (boardId: number) => {
+    setEditingBoardTitleId(boardId);
   };
 
-  const handleBoardsBlur = () => {
-    setEditingBoardId(null);
+  const handleBoardTitleBlur = () => {
+    setEditingBoardTitleId(null);
   };
 
   const isSaveButtonDisabled = !hasChanges;
@@ -149,10 +149,10 @@ export const BoardsContainer: React.FC = () => {
       </button>
       <Boards
         boards={boards}
-        editingId={editingBoardId}
+        editingTitleId={editingBoardTitleId}
         onChange={handleBoardChange}
-        onClick={handleBoardsClick}
-        onBlur={handleBoardsBlur}
+        onSelectEditingTitle={handleSelectEditingTitleId}
+        onBlur={handleBoardTitleBlur}
         // TODO: add "onTaskFocused" callback to erase board editing id
       />
     </div>

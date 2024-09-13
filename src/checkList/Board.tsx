@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Task } from './Task';
 import { ITask } from './types';
 import './Board.css';
@@ -7,26 +7,35 @@ export interface IProps {
   id: number;
   value: string;
   tasks: ITask[];
-  isEditing: boolean;
+  isEditingTitle: boolean;
   onBlur: () => void;
   onChange: (
     newBoardName: string,
     tasks: ITask[],
     boardId: number,
   ) => void;
-  onClick: (boardId: number) => void;
+  onSelectEditingTitle: (boardId: number) => void;
   initTasks?: any[];
 }
 
 export const Board: React.FC<IProps> = (props) => {
-  const { id, value, tasks, isEditing, onBlur, onChange, onClick } = props;
+  const { id, value, tasks, isEditingTitle, onBlur, onChange, onSelectEditingTitle } = props;
 
-  ////?? const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
+  // TODO: const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
 
-  ////? wrong working
+  // TODO: wrong working?
   const [nextTaskID, setNextTaskID] = useState(
     tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1
   );
+
+  const titleInputRef = useRef<HTMLInputElement>(null);
+
+  // auto focus appearing title input
+  useEffect(() => {
+    if (isEditingTitle) {
+      titleInputRef.current?.focus();
+    }
+  }, [isEditingTitle]);
 
   const onTaskChange = (newTask: ITask) => {
     const tasksWithoutChanged = tasks.filter(t => t.id !== newTask.id);
@@ -52,21 +61,26 @@ export const Board: React.FC<IProps> = (props) => {
     />
   ));
 
-
-  const handleBoardChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value, tasks, id);
   };
 
   return (
-    <div className="board" onClick={() => onClick(id)}>
-      {isEditing ? (
+    <div className="board">
+      {isEditingTitle ? (
         <input
+          ref={titleInputRef}
           value={value}
-          onChange={handleBoardChange}
+          onChange={handleTitleChange}
           onBlur={onBlur}
         />
       ) : (
-        <div className="board">{value}</div>
+        <div
+          onClick={() => onSelectEditingTitle(id)}
+          className="board"
+        >
+          {value}
+        </div>
       )}
       <div className="taskList">
         <button onClick={handleAddTask}>Add task</button>
