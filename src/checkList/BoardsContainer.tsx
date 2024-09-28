@@ -1,49 +1,14 @@
 import { useEffect, useState } from "react";
 import { Boards } from './Boards';
 import { IBoard, ITask } from './types';
+import { isBoard } from './typeGuards';
 
 import './BoardsContainer.css';
 
 const INITIAL_BOARD_ID = 0;
 const INITIAL_STATE: IBoard[] = [];
 
-// TODO: extract to another files
-const isTask = (pTask: unknown): pTask is ITask => {
-  if (
-    pTask !== null &&
-    typeof pTask === 'object' &&
 
-    'id' in pTask &&
-    Number.isInteger(pTask.id) &&
-
-    'title' in pTask &&
-    typeof pTask.title === 'string'
-  ) {
-    return true;
-  }
-
-  return false;
-};
-const isBoard = (pBoard: unknown): pBoard is IBoard => {
-  if (
-    pBoard !== null &&
-    typeof pBoard === 'object' &&
-
-    'id' in pBoard &&
-    Number.isInteger(pBoard.id)&&
-
-    'value' in pBoard &&
-    typeof pBoard.value === 'string' &&
-
-    'tasks' in pBoard &&
-    Array.isArray(pBoard.tasks) &&
-    pBoard.tasks.every(potentialTask => isTask(potentialTask))
-  ) {
-    return true;
-  }
-
-  return false;
-}
 const BOARDS_LOCALSTORAGE_KEY = 'boards';
 const readData = () => localStorage.getItem(BOARDS_LOCALSTORAGE_KEY);
 const parseData = (readData: string) => {
@@ -69,9 +34,7 @@ export const BoardsContainer: React.FC = () => {
   const [boards, setBoards] = useState<IBoard[]>();
   const [nextBoardID, setNextBoardID] = useState<number | null>(null);
 
-  const [editingBoardTitleId, setEditingBoardTitleId] = useState<number | null>(null);
-
-  const saveBoards = () => {
+  const handleBoardsSave = () => {
     const newSerializedState = JSON.stringify(boards);
     localStorage.setItem(BOARDS_LOCALSTORAGE_KEY, newSerializedState);
     setPrevSerializedState(newSerializedState);
@@ -82,7 +45,6 @@ export const BoardsContainer: React.FC = () => {
   useEffect(() => {
     if (!!boards?.length || nextBoardID !== null) return;
 
-    console.log('DBG__ init data read');
     const savedData = readData() || JSON.stringify(INITIAL_STATE);
     const savedBoards = parseData(savedData) || INITIAL_STATE;
     setPrevSerializedState(savedData);
@@ -127,12 +89,13 @@ export const BoardsContainer: React.FC = () => {
     setBoards(newBoards);
   };
 
-  const handleSelectEditingTitleId = (boardId: number) => {
-    setEditingBoardTitleId(boardId);
-  };
-
-  const handleBoardTitleBlur = () => {
-    setEditingBoardTitleId(null);
+  const handleBoardRemove = (id: number) => {
+    if (boards) { // formal
+      const replaceIdx = boards.findIndex(t => t.id === id);
+      const copiedBoards =  boards.slice();
+      copiedBoards.splice(replaceIdx, 1);
+      setBoards(copiedBoards);
+    }
   };
 
   const isSaveButtonDisabled = !hasChanges;
@@ -141,19 +104,20 @@ export const BoardsContainer: React.FC = () => {
 
   return (
     <div className="boardContainer">
-      <button disabled={isSaveButtonDisabled} className="addBoardButton" onClick={saveBoards}>
-        SAVE BOARDS
+      <button
+        disabled={isSaveButtonDisabled}
+        className="addBoardButton"
+        onClick={handleBoardsSave}
+      >
+        Save Boards
       </button>
       <button className="addBoardButton" onClick={handleAddBoard}>
         +
       </button>
       <Boards
         boards={boards}
-        editingTitleId={editingBoardTitleId}
         onChange={handleBoardChange}
-        onSelectEditingTitle={handleSelectEditingTitleId}
-        onBlur={handleBoardTitleBlur}
-        // TODO: add "onTaskFocused" callback to erase board editing id
+        onBoardRemove={handleBoardRemove}
       />
     </div>
   );

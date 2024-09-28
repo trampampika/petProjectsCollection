@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Task } from './Task';
 import { ITask } from './types';
 import './Board.css';
@@ -7,55 +7,28 @@ export interface IProps {
   id: number;
   value: string;
   tasks: ITask[];
-  isEditingTitle: boolean;
-  onBlur: () => void;
   onChange: (
     newBoardName: string,
     tasks: ITask[],
     boardId: number,
   ) => void;
-  onSelectEditingTitle: (boardId: number) => void;
   initTasks?: any[];
+  onBoardRemove: (id: number) => void;
 }
 
-////extract to BoardsContainer
-// interface IEmptyEditingTaskId {
-//   boardId: null;
-//   taskId: null;
-// };
-// interface IFilledEditingTaskId {
-//   boardId: number;
-//   taskId: number;
-// };
-// type TEditingTaskId = IEmptyEditingTaskId | IFilledEditingTaskId;
-
 export const Board: React.FC<IProps> = (props) => {
-  const { id, value, tasks, isEditingTitle, onBlur, onChange, onSelectEditingTitle } = props;
-
-  ////extract to BoardsContainer
-  // const [editingTaskId, setEditingTaskId] = useState<TEditingTaskId>({
-  //   boardId: null,
-  //   taskId: null,
-  // });
+  const { id, value, tasks, onChange, onBoardRemove } = props;
 
   // TODO: wrong working?
   const [nextTaskID, setNextTaskID] = useState(
     tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1
   );
 
-  const titleInputRef = useRef<HTMLInputElement>(null);
-
-  // auto focus appearing title input
-  useEffect(() => {
-    if (isEditingTitle) {
-      titleInputRef.current?.focus();
-    }
-  }, [isEditingTitle]);
-
-  const onTaskChange = (newTask: ITask) => {
-    const tasksWithoutChanged = tasks.filter(t => t.id !== newTask.id);
-    const newTasks = [...tasksWithoutChanged, newTask];
-    onChange(value, newTasks, id);
+  const handleTaskChange = (newTask: ITask) => {
+    const indexReplaceToNewTask = tasks.findIndex(t => t.id === newTask.id);
+    const copiedTasks = tasks.slice();
+    copiedTasks[indexReplaceToNewTask] = newTask;
+    onChange(value, copiedTasks, id);
   };
 
   const handleAddTask = () => {
@@ -67,40 +40,40 @@ export const Board: React.FC<IProps> = (props) => {
     setNextTaskID(nextTaskID + 1);
   }
 
+  const handleTaskRemove = (id: number, boardId: number) => {
+    const indexReplaceToNewTask = tasks.findIndex(t => t.id === id);
+    const copiedTasks =  tasks.slice();
+    copiedTasks.splice(indexReplaceToNewTask, 1);
+    onChange(value, copiedTasks, id = boardId);
+  };
+
   const taskElements = tasks.map(task => (
     <Task
+      boardId={id}
       key={task.id}
       id={task.id}
-      value={task.title}
-      onChange={onTaskChange}
+      title={task.title}
+      onChange={handleTaskChange}
+      onTaskRemove={handleTaskRemove}
     />
   ));
 
-  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleTitleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.currentTarget.value, tasks, id);
+  };
+
+  const handleBoardRemove = () => {
+    onBoardRemove(id);
   };
 
   return (
     <div className="board">
-      {isEditingTitle ? (
-        <input
-          ref={titleInputRef}
-          value={value}
-          onChange={handleTitleChange}
-          onBlur={onBlur}
-        />
-      ) : (
-        <div
-          onClick={() => onSelectEditingTitle(id)}
-          className="board"
-        >
-          {value}
-        </div>
-      )}
+      <textarea value={value} onChange={handleTitleChange} />
       <div className="taskList">
         <button onClick={handleAddTask}>Add task</button>
       </div>
       {taskElements}
+      <button onClick={handleBoardRemove}>Remove board</button>
     </div>
   );
 };
