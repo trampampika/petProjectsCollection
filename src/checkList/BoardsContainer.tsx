@@ -102,23 +102,28 @@ export const BoardsContainer: React.FC = () => {
 
   if (!boards) return null;
 
-  return (
+   return (
     <div className="boardContainer">
-      <button
-        disabled={isSaveButtonDisabled}
-        className="addBoardButton"
-        onClick={handleBoardsSave}
-      >
-        Save Boards
-      </button>
-      <button className="addBoardButton" onClick={handleAddBoard}>
-        +
-      </button>
       <Boards
         boards={boards}
         onChange={handleBoardChange}
         onBoardRemove={handleBoardRemove}
       />
+      <div>
+        <button
+          disabled={isSaveButtonDisabled}
+          className="addBoardButton"
+          onClick={handleBoardsSave}
+        >
+          Save Boards
+        </button>
+        <button
+          className="addBoardButton"
+          onClick={handleAddBoard}
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }

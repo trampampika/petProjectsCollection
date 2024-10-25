@@ -1,18 +1,5 @@
 /* //// this file shoud be extracted at all - then delete */
 
-.boardTop {
-  align-items: flex-start;
-  display: flex;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 10px;
-  width: 90%;
-  border-radius: 10px;
-  word-wrap: break-word;
-}
-
 .ListItem {
   display: absolute;
   padding-left: 10px;
