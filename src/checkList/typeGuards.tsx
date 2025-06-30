@@ -1,4 +1,4 @@
-import { IBoard, ITask } from './types';
+import { IBoard, ITask } from './boards/types';
 
 export const isTask = (pTask: unknown): pTask is ITask => {
   if (

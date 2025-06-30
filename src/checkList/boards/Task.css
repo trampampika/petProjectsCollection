@@ -1,0 +1,13 @@
+.task {
+  width: 100%;
+  resize: vertical;
+  min-height: 22px;
+  max-height: 160px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.task_done {
+  background-color: #d6e5eb;
+  text-decoration: line-through;
+  color: rgb(113, 157, 157);
+}

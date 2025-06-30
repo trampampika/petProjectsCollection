@@ -1,0 +1,155 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 70vh;
+  background-color: #e2edf0;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.boardTop {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+textarea {
+  border: none;
+  font-family: Calibri, sans-serif;
+  font-size: 12px;
+}
+* {
+  font-family: 'Calibri', sans-serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: #f6fafa;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+
+.boardName-editable {
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: white;
+}
+
+
+.boardName-readonly {
+  background-color: transparent;
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.taskList {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  position: static;
+  background-color: #c2d4db;
+}
+
+.progressBar {
+  height: 5px;
+  background-color: #e75e5e;
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
+
+
+.addTask {
+  height: 100%;
+}
+
+.removeBoard {
+  height: 100%;
+}
+
+
+.taskLine {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  border: none;
+  transition: border 0.2s ease;
+  padding: 2px;
+}
+
+.taskLine:hover {
+  background-color: #ebf4f7;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.boardButtom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2px;
+}
+
+.checkBoxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcc173;
+  outline: none;
+}
+
+.checkBoxContainer.is-done {
+  background-color: #b5c4cb;
+}
+
+
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  accent-color: #fbeaa6;
+  outline: none;
+  border: none;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: #b4d4e1;
+}
+
+.crossRemovingTask {
+  outline: none;
+  color: #d76666;
+  font-weight: bold;
+  border: none;
+  background-color: #ffdcdf;
+}

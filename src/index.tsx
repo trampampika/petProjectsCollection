@@ -5,7 +5,7 @@ import './checkList/checkListStyle.css';
 // return showing MindfulReadingApp after ending of tic_tac_toe tutorial
 //import { MindfulReadingApp } from './mindfulReadingProj/MindfulReadingApp';
 
-import { BoardsContainer } from './checkList/BoardsContainer';
+import { AllProjectsRouter } from './checkList/AllProjectsRouter';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BoardsContainer />
+    <AllProjectsRouter />
   </React.StrictMode>
 );
 

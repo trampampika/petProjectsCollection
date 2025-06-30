@@ -1,0 +1,226 @@
+.moodCurrentMonth {
+  display: flex;
+  justify-items: center;
+  display: grid;
+  position: relative;
+  grid-template-columns: 5px 5px 5px 5px 5px 5px 5px;
+  grid-template-rows: 10px 10px 10px 10px 10px;
+  gap: 43px;
+}
+
+
+.line {
+  width: 30%;
+  border: none;
+  border-top: 1px solid #87a8d2;
+}
+
+.year_calendar{
+  background-color:transparent;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  height: 30px;
+  padding: 0;
+}
+
+
+.year_calendar:hover {
+  background-color:rgb(165, 223, 235);
+}
+
+.year_calendar:focus {
+  outline: none;
+}
+
+.moodDayValueForMounth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.options_calendar_li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.options_calendar_li:hover {
+  background-color: #c7f6f4;
+}
+
+.options_calendar {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.dropdown_calendar_button:hover {
+  background-color: rgb(165, 223, 235);
+}
+
+.dropdown_calendar_button {
+  font-size: 18px;
+  width: 80px;
+  height: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.dropdown_calendar {
+  position: relative;
+  height: 30px;
+}
+
+.selectingMonthToDisplay_calendar{
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  text-Align: left;
+  height: 30px;
+ }
+
+ .calendarContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px;
+  height: 320px;
+  padding: 10px;
+  background-color: rgb(200, 235, 237);
+  border-radius: 7px;
+  border-color: black;
+  font-size: 18px;
+  color: #354f6e;
+}
+
+.dayOfTheMonth {
+  font-size: 14px;
+}
+
+.moodDayNumber {
+  width: 33px;
+  height: 33px;
+  z-index: 0;
+ }
+
+
+.moodDay {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transform: translate(-50%, 100%);
+  position: relative;
+  margin: 20px;
+  width: 37px;
+  height: 37px;
+}
+
+
+ .moodChoice {
+  padding: 10px;
+  display: flex;
+  position: absolute;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 7px;
+  align-items: center;
+  height: 40px;
+  background-color: beige;
+  border-radius: 15px;
+  z-index:2
+ }
+
+ .noEmoji{
+  z-index: 0;
+  width: 31px;
+  height: 31px;
+  background-image: url('../images/noEmoji.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+ .awesome{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/awesome.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+ .good{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/good.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+
+ .lilGood{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/lil\ good.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+
+ .neutral{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/neutral.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+
+ .lilBad{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/lil\ bad.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+
+ .bad{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/bad.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+ .awful{
+  z-index: 0;
+  width: 33px;
+  height: 33px;
+  background-image: url('../images/awful.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
