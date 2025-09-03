@@ -1,9 +1,26 @@
 .boardContainer {
   display: flex;
   flex-wrap: nowrap;
-  gap: 20px;
+  gap: 1px;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .addBoardButton {
-  margin-right: 10px;
+  margin-right: 5px;
+  min-width: 100px;
+  padding: 5px 5px;
 }
+
+
+.topButton {
+  align-self: flex-start;
+  margin-bottom: auto;
+  min-width: 100px;
+  padding: 5px 5px;
+}
+

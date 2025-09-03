@@ -12,35 +12,6 @@ app.use(cors({
 
 const port = 3001;
 
-/*app.post('/save', (req, res) => {
-  console.log('Request received:', req.method, req.originalUrl, req.body);
-  const filePath = path.resolve('/mnt/C/Users/tramp/OneDrive/Рабочий стол/mindfulReading/backend/data.json');
-  console.log('Тело запроса:', req.body);
-
-
-  const data = req.body;
-  const jsonData = JSON.stringify(data, null, 2);
-
-  if (!fs.existsSync(path.dirname(filePath))) {
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  }
-
-  fs.writeFile(filePath, jsonData, (err) => {
-    if (err) {
-      console.error('Ошибка записи файла:', err.message);
-      return res.status(500).send('Saving error.');
-    }
-    console.log(`Данные успешно сохранены в файл: ${filePath}`); // Исправлено
-    res.status(200).send('Saved successfully.');
-  });
-});*/
-
-//   /saveHardcodeOBJ
-
-//
-
-
-// Роут для обработки запроса
 app.get('/api/objects', (req, res) => {
   const { year, month } = req.query;
 
@@ -152,19 +123,8 @@ app.post('/saveCalendar', (req, res) => {
     res.status(200).send('Saved successfully.');
   });
 });
-/*
-app.get('/setData', (req, res) => {
-  fs.readFile('data.json', 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).json({ message: 'Error reading file' });
-    }
 
-    res.setHeader('Content-Type', 'application/json');
-    res.send(data);
-  });
-});
 
-*/
 const absolutePathToFile = '/Users/tramp/OneDrive/Рабочий стол/mindfulReading/backend/calendarData.json';
 
 app.get('/setData', (req, res) => {

@@ -13,7 +13,7 @@ export const AllProjectsRouter: React.FC = () => {
 
 
   return (
-<Router>
+<Router basename="/petProjectsCollection">
   <nav>
     <ul>
       <li>
@@ -24,9 +24,6 @@ export const AllProjectsRouter: React.FC = () => {
       </li>
       <li>
         <Link to="/chart">Bar Chart</Link>
-      </li>
-      <li>
-        <Link to="/dogs">Dogs</Link>  {/* Добавлено! */}
       </li>
     </ul>
   </nav>

@@ -208,13 +208,11 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 async function getFilteredObject(year: string, month: string) {
   try {
-    const response = await fetch(
-      `http://localhost:3001/api/objects?year=${encodeURIComponent(year)}&month=${encodeURIComponent(month)}`
-    );
-    if (!response.ok) {
-      throw new Error(`Ошибка при получении данных: ${response.status}`);
-    }
-    return await response.json();
+
+const calendarDataString = localStorage.getItem(month+year)?? 'null';
+const calendarData = JSON.parse(calendarDataString);
+
+    return calendarData;
   } catch (error) {
     console.error('Произошла ошибка:', error);
   }
@@ -225,10 +223,14 @@ useEffect(() => {
     const currentYear = year;
     const currentMonth = selectedMonth;
 
+    console.log(year, selectedMonth, "year, selectedMonth");
+
     try {
       const filteredData = await getFilteredObject(currentYear, currentMonth);
 
-      if (Object.keys(filteredData).length === 0) {
+      console.log(filteredData, "filteredData");
+
+      if (filteredData === null) {
         const daysInMonth = getDaysInMonthByNameAndYear(currentMonth, currentYear);
         const defaultDays = generateDefaultDays(daysInMonth);
 
@@ -257,30 +259,37 @@ useEffect(() => {
 
 
 const sendHardcode = () => {
-  updateCalendarOnServer(moodCalendar);
+  saveCalendarToLocalStorage(moodCalendar);
 };
 
-const updateCalendarOnServer = async (newCalendar: any) => {
+const saveCalendarToLocalStorage = (newCalendar: any) => {
   try {
-    const response = await fetch('http://localhost:3001/updateObject', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newCalendar),
-    });
 
-    const responseData = await response.json();
-    console.log('Server response:', responseData);
 
-    const responseDataString = JSON.stringify(responseData);
-    localStorage.setItem('savedData', responseDataString);
+ // @ts-ignore
+let propertiesForNaming = newCalendar.map(item => ({
+  month: item.month,
+  year: item.year
+}));
+
+console.log(propertiesForNaming,'resultresultresult');
+
+    const keyName = `${propertiesForNaming[0].month}${propertiesForNaming[0].year}`
+
+
+       const calendarToSave = JSON.stringify(newCalendar);
+
+    localStorage.setItem(keyName, calendarToSave);
+
+    console.log(' Данные успешно сохранены в Local Storage');
+
+    return true;
 
   } catch (error) {
-    console.error('Error updating calendar on server:', error);
+    console.error(' Ошибка при сохранении в Local Storage:', error);
+    return false;
   }
 };
-
 
 
   return (
@@ -298,8 +307,7 @@ const updateCalendarOnServer = async (newCalendar: any) => {
           </ul>
         )}
       </div>
-      <button onClick={sendHardcode}>update Calendar On Server</button>
-      <div className="moodDayValueForMounth">
+          <div className="moodDayValueForMounth">
           <input
             className="year_calendar"
             type="number"
@@ -313,6 +321,8 @@ const updateCalendarOnServer = async (newCalendar: any) => {
       </div>
       <hr className="line" />
       <div className="moodCurrentMonth">{moodDayElements}</div>
+      <button onClick={sendHardcode} className="saveButton" title="Save calendar">
+</button>
     </div>
   )
 }

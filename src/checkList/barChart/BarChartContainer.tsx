@@ -140,18 +140,17 @@ useEffect(() => {
 
 async function getFilteredObject(year: string, month: string) {
   try {
-    const response = await fetch(
-      `http://localhost:3001/api/objects?year=${encodeURIComponent(year)}&month=${encodeURIComponent(month)}`
-    );
-    if (!response.ok) {
-      throw new Error(`Ошибка при получении данных: ${response.status}`);
-    }
-    const jsonData = await response.json();
-    setDataFromServer(jsonData);
-    console.log(jsonData, "jsonData");
 
-    localStorage.setItem("year", jsonData[0].year);
-    localStorage.setItem("month", jsonData[0].month);
+
+    const data = localStorage.getItem(month+year);
+    const dataJson = JSON.parse(data || '{}');
+
+    console.log(data, "datadatadata" );
+
+    setDataFromServer(dataJson);
+
+    localStorage.setItem("year", dataJson[0].year);
+    localStorage.setItem("month", dataJson[0].month);
 
   } catch (error) {
     console.error('Произошла ошибка:', error);
@@ -223,11 +222,11 @@ return (
       <h2
         style={{
           textAlign: "left",
-          fontSize: "20px",
+          fontSize: "17px",
           fontWeight: "normal",
         }}
       >
-        Количество дней настроения за:
+        Mood statistics for:
       </h2>
       <div className="selectingMonthToDisplay">
         <div className="dropdown" ref={optionsMenu}>
@@ -255,7 +254,7 @@ return (
     </div>
     <div className="errorContainer">
       <div style={{ display: showErrorMessage ? "block" : "none", color:"red" }}>
-        Отсутствует статистика за этот период
+        There are no statistics for this period
       </div>
     </div>
       <ResponsiveContainer width="100%" height="110%">

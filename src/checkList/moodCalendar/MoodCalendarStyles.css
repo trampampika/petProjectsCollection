@@ -102,6 +102,7 @@
   border-color: black;
   font-size: 18px;
   color: #354f6e;
+  position: relative;
 }
 
 .dayOfTheMonth {
@@ -224,3 +225,23 @@
   background-repeat: no-repeat;
  }
 
+.saveButton {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 23 23' fill='%2366CDAA'%3E%3Cpath d='M7 21H17C19.2091 21 21 19.2091 21 17V7.41421C21 7.149 20.8946 6.89464 20.7071 6.70711L17.2929 3.29289C17.1054 3.10536 16.851 3 16.5858 3H7C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21Z' stroke='%23008B8B' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M9 3H15V6C15 6.55228 14.5523 7 14 7H10C9.44772 7 9 6.55228 9 6V3Z' stroke='%23008B8B' stroke-width='1'/%3E%3Cpath d='M17 21V14C17 13.4477 16.5523 13 16 13H8C7.44772 13 7 13.4477 7 14V21' stroke='%23008B8B' stroke-width='1'/%3E%3Cpath d='M11 17H13' stroke='%23008B8B' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.saveButton:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}

@@ -54,18 +54,34 @@ export const BoardsContainer: FC = () => {
     setNextBoardID(crypto.randomUUID());
 }, [boards, nextBoardID]);
 
-  const setData = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/setData");
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error("There was an error:", error);
+
+ useEffect(() => {
+    const data = setData();
+    setBoards(data);
+
+}, []);
+
+const setData = () => {
+  try {
+    // Получаем данные из localStorage по ключу 'boardsData'
+    const savedData = localStorage.getItem('boardsData');
+
+    if (savedData === null) {
+      console.log("Данные не найдены в localStorage");
+      return null;
     }
-  };
+
+    // Парсим JSON строку в объект JavaScript
+    const parsedData = JSON.parse(savedData);
+    console.log("Данные успешно загружены из localStorage:", parsedData);
+
+    return parsedData;
+
+  } catch (error) {
+    console.error("Ошибка при загрузке данных из localStorage:", error);
+    return null;
+  }
+};
 
   const [hasChanges, setHasChanges] = useState(false);
 
@@ -80,23 +96,19 @@ export const BoardsContainer: FC = () => {
     }
   }, [boards, prevSerializedState]);
 
-  const saveData = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/save", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: boards }),
-      });
-      if (!response.ok) {
-        throw new Error(`Ошибка при сохранении данных: ${response.status}`);
-      }
-      console.log("Данные успешно сохранены");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
+  const saveData = () => {
+  try {
+
+    localStorage.setItem('boardsData', JSON.stringify(boards));
+    console.log("Данные успешно сохранены в localStorage");
+
+  } catch (error) {
+    console.error("Ошибка при сохранении в localStorage:", error);
+  }
+};
+
+
   const handleAddBoard = () => {
     if (!boards) throw Error("no boards when add new board");
     if (!nextBoardID) throw Error("Init next board ID error");
@@ -152,7 +164,7 @@ export const BoardsContainer: FC = () => {
         onChange={handleBoardChange}
         onBoardRemove={handleBoardRemove}
       />
-      <div>
+      <div className='buttonsContainer'>
         <button
           disabled={isSaveButtonDisabled}
           className="addBoardButton"
