@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting</title>
+    <script>
+        const segment = 1; // Измените если ваш сайт в подпапке
+        const path = window.location.pathname.split('/').slice(segment).join('/');
+        window.location.href = '/index.html?p=' + encodeURIComponent(path + window.location.search + window.location.hash);
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
