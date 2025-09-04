@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/petProjectsCollection/static/css/main.c69febe0.css",
-    "main.js": "/petProjectsCollection/static/js/main.5a3bdc90.js",
+    "main.js": "/petProjectsCollection/static/js/main.fb381a34.js",
     "static/js/453.3515962d.chunk.js": "/petProjectsCollection/static/js/453.3515962d.chunk.js",
     "static/media/awful.svg": "/petProjectsCollection/static/media/awful.84a34465c2b390f20e84.svg",
     "static/media/awesome.svg": "/petProjectsCollection/static/media/awesome.94852a80e3fb648fb2d0.svg",
@@ -13,11 +13,11 @@
     "static/media/noEmoji.svg": "/petProjectsCollection/static/media/noEmoji.a6520a69c199d45fa135.svg",
     "index.html": "/petProjectsCollection/index.html",
     "main.c69febe0.css.map": "/petProjectsCollection/static/css/main.c69febe0.css.map",
-    "main.5a3bdc90.js.map": "/petProjectsCollection/static/js/main.5a3bdc90.js.map",
+    "main.fb381a34.js.map": "/petProjectsCollection/static/js/main.fb381a34.js.map",
     "453.3515962d.chunk.js.map": "/petProjectsCollection/static/js/453.3515962d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c69febe0.css",
-    "static/js/main.5a3bdc90.js"
+    "static/js/main.fb381a34.js"
   ]
 }
