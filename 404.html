@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-        // Сохраняем путь и перенаправляем
-        const path = window.location.pathname;
-        const redirectPath = '/petProjectsCollection/index.html' + path;
-
-        // Проверяем, не пытаемся ли мы уже перенаправить
-        if (!window.location.search.includes('redirected')) {
-            window.location.href = redirectPath + '?redirected=true';
-        }
+        // Правильное перенаправление
+        const currentPath = window.location.pathname;
+        
+        // Убираем лишние части пути
+        const cleanPath = currentPath.replace('/petProjectsCollection', '').replace('/index.html', '');
+        
+        // Перенаправляем на основной index.html с правильным путем
+        window.location.href = '/petProjectsCollection/index.html#' + cleanPath;
     </script>
 </head>
 <body>
