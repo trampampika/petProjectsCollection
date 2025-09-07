@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script>
-        // Правильное перенаправление
-        const currentPath = window.location.pathname;
-        
-        // Убираем лишние части пути
-        const cleanPath = currentPath.replace('/petProjectsCollection', '').replace('/index.html', '');
-        
-        // Перенаправляем на основной index.html с правильным путем
-        window.location.href = '/petProjectsCollection/index.html#' + cleanPath;
-    </script>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    'use strict';
+    const currentPath = window.location.pathname.substring(1);
+    window.location.href = `/?redirect=${currentPath}`;
+  </script>
 </head>
 <body>
-    <p>Redirecting... <a href="/petProjectsCollection/">Click here</a> if not redirected.</p>
+  <p>Redirecting... <a href="/">Click here</a> if not redirected.</p>
 </body>
 </html>
