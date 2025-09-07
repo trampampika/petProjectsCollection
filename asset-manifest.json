@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.4c04715a.css",
-    "main.js": "./static/js/main.5a6fcdfe.js",
-    "static/js/453.3515962d.chunk.js": "./static/js/453.3515962d.chunk.js",
-    "static/media/awful.svg": "./static/media/awful.84a34465c2b390f20e84.svg",
-    "static/media/awesome.svg": "./static/media/awesome.94852a80e3fb648fb2d0.svg",
-    "static/media/bad.svg": "./static/media/bad.ffa31636931acc42db0e.svg",
-    "static/media/good.svg": "./static/media/good.75cd7e3a96dbd89bafad.svg",
-    "static/media/lil good.svg": "./static/media/lil good.1ddde9cc01a2c20e884c.svg",
-    "static/media/lil bad.svg": "./static/media/lil bad.9cec8987437d84c12532.svg",
-    "static/media/neutral.svg": "./static/media/neutral.f12b4ffe5157b22d7a59.svg",
-    "static/media/noEmoji.svg": "./static/media/noEmoji.a6520a69c199d45fa135.svg",
-    "index.html": "./index.html",
-    "main.4c04715a.css.map": "./static/css/main.4c04715a.css.map",
-    "main.5a6fcdfe.js.map": "./static/js/main.5a6fcdfe.js.map",
-    "453.3515962d.chunk.js.map": "./static/js/453.3515962d.chunk.js.map"
+    "main.css": "/pet-projects-collection/static/css/main.76a578c6.css",
+    "main.js": "/pet-projects-collection/static/js/main.0f55cc08.js",
+    "static/js/453.cd2793c2.chunk.js": "/pet-projects-collection/static/js/453.cd2793c2.chunk.js",
+    "static/media/awful.svg": "/pet-projects-collection/static/media/awful.84a34465c2b390f20e84.svg",
+    "static/media/awesome.svg": "/pet-projects-collection/static/media/awesome.94852a80e3fb648fb2d0.svg",
+    "static/media/bad.svg": "/pet-projects-collection/static/media/bad.ffa31636931acc42db0e.svg",
+    "static/media/good.svg": "/pet-projects-collection/static/media/good.75cd7e3a96dbd89bafad.svg",
+    "static/media/lil good.svg": "/pet-projects-collection/static/media/lil good.1ddde9cc01a2c20e884c.svg",
+    "static/media/lil bad.svg": "/pet-projects-collection/static/media/lil bad.9cec8987437d84c12532.svg",
+    "static/media/neutral.svg": "/pet-projects-collection/static/media/neutral.f12b4ffe5157b22d7a59.svg",
+    "static/media/noEmoji.svg": "/pet-projects-collection/static/media/noEmoji.a6520a69c199d45fa135.svg",
+    "index.html": "/pet-projects-collection/index.html",
+    "main.76a578c6.css.map": "/pet-projects-collection/static/css/main.76a578c6.css.map",
+    "main.0f55cc08.js.map": "/pet-projects-collection/static/js/main.0f55cc08.js.map",
+    "453.cd2793c2.chunk.js.map": "/pet-projects-collection/static/js/453.cd2793c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c04715a.css",
-    "static/js/main.5a6fcdfe.js"
+    "static/css/main.76a578c6.css",
+    "static/js/main.0f55cc08.js"
   ]
 }

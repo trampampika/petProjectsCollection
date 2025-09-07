@@ -5,11 +5,18 @@
   <title>Redirecting...</title>
   <script>
     'use strict';
-    const currentPath = window.location.pathname.substring(1);
-    window.location.href = `/petProjectsCollection/?redirect=${currentPath}`;
+
+    // temporary hardcode
+    const SUBDOMAIN = '/pet-projects-collection';
+
+    const currentPath = window.location.pathname
+      .replaceAll(SUBDOMAIN, '')
+      .substring(1);
+    window.location.href = `${SUBDOMAIN}/?redirect=${currentPath}`;
   </script>
 </head>
 <body>
-  <p>Redirecting... <a href="/petProjectsCollection">Click here</a> if not redirected.</p>
+  <!-- temporary hardcode -->
+  <p>Redirecting... <a href="/pet-projects-collection">Click here</a> if not redirected.</p>
 </body>
 </html>
