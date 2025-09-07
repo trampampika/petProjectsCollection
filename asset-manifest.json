@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.7035c49a.css",
-    "main.js": "/static/js/main.461d917a.js",
-    "static/js/453.3515962d.chunk.js": "/static/js/453.3515962d.chunk.js",
-    "static/media/awful.svg": "/static/media/awful.84a34465c2b390f20e84.svg",
-    "static/media/awesome.svg": "/static/media/awesome.94852a80e3fb648fb2d0.svg",
-    "static/media/bad.svg": "/static/media/bad.ffa31636931acc42db0e.svg",
-    "static/media/good.svg": "/static/media/good.75cd7e3a96dbd89bafad.svg",
-    "static/media/lil good.svg": "/static/media/lil good.1ddde9cc01a2c20e884c.svg",
-    "static/media/lil bad.svg": "/static/media/lil bad.9cec8987437d84c12532.svg",
-    "static/media/neutral.svg": "/static/media/neutral.f12b4ffe5157b22d7a59.svg",
-    "static/media/noEmoji.svg": "/static/media/noEmoji.a6520a69c199d45fa135.svg",
-    "index.html": "/index.html",
-    "main.7035c49a.css.map": "/static/css/main.7035c49a.css.map",
-    "main.461d917a.js.map": "/static/js/main.461d917a.js.map",
-    "453.3515962d.chunk.js.map": "/static/js/453.3515962d.chunk.js.map"
+    "main.css": "/petProjectsCollection/static/css/main.c69febe0.css",
+    "main.js": "/petProjectsCollection/static/js/main.2f32eef7.js",
+    "static/js/453.3515962d.chunk.js": "/petProjectsCollection/static/js/453.3515962d.chunk.js",
+    "static/media/awful.svg": "/petProjectsCollection/static/media/awful.84a34465c2b390f20e84.svg",
+    "static/media/awesome.svg": "/petProjectsCollection/static/media/awesome.94852a80e3fb648fb2d0.svg",
+    "static/media/bad.svg": "/petProjectsCollection/static/media/bad.ffa31636931acc42db0e.svg",
+    "static/media/good.svg": "/petProjectsCollection/static/media/good.75cd7e3a96dbd89bafad.svg",
+    "static/media/lil good.svg": "/petProjectsCollection/static/media/lil good.1ddde9cc01a2c20e884c.svg",
+    "static/media/lil bad.svg": "/petProjectsCollection/static/media/lil bad.9cec8987437d84c12532.svg",
+    "static/media/neutral.svg": "/petProjectsCollection/static/media/neutral.f12b4ffe5157b22d7a59.svg",
+    "static/media/noEmoji.svg": "/petProjectsCollection/static/media/noEmoji.a6520a69c199d45fa135.svg",
+    "index.html": "/petProjectsCollection/index.html",
+    "main.c69febe0.css.map": "/petProjectsCollection/static/css/main.c69febe0.css.map",
+    "main.2f32eef7.js.map": "/petProjectsCollection/static/js/main.2f32eef7.js.map",
+    "453.3515962d.chunk.js.map": "/petProjectsCollection/static/js/453.3515962d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7035c49a.css",
-    "static/js/main.461d917a.js"
+    "static/css/main.c69febe0.css",
+    "static/js/main.2f32eef7.js"
   ]
 }
